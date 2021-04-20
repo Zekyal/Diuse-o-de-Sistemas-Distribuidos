@@ -4,12 +4,10 @@ import java.io.InputStreamReader;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
-import java.net.InetSocketAddress;
 import java.net.MulticastSocket;
-import java.net.NetworkInterface;
-import java.nio.charset.StandardCharsets;
+import java.nio.charset.Charset;
 
-public class ChatMulticast {
+public class chatMulticast {
     static class Worker extends Thread{
         public void run(){           
             // En un ciclo infinito se recibirán los mensajes enviados al grupo 
@@ -21,7 +19,7 @@ public class ChatMulticast {
                     socket.setReuseAddress(true);
                     socket.joinGroup(group);//se une al grupo
                     byte[] buffer = recibe_mensaje_multicast(socket, 9800);
-                    System.out.println(new String(buffer, StandardCharsets.UTF_8).trim());
+                    System.out.println(new String(buffer, Charset.forName("windows-1252")).trim());
                     socket.leaveGroup(group);
                     socket.close();
                 }catch(Exception e){
@@ -42,7 +40,7 @@ public class ChatMulticast {
         Worker w = new Worker();
         w.start();
         String nombre = args[0];
-        BufferedReader msg = new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
+        BufferedReader msg = new BufferedReader(new InputStreamReader(System.in));
         
         // En un ciclo infinito se leerá cada mensaje del teclado y se enviará el mensaje al
         // grupo 230.0.0.0 a través del puerto 50000.
