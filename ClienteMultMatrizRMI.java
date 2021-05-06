@@ -10,8 +10,8 @@ public class ClienteMultMatrizRMI{
         int i, j, k;
         double checksum = 0;
         
-        String url1 = "rmi://localhost/MatrizObjDist";
-        String url2 = "rmi://localhost/MatrizObjDist";
+        String url1 = "rmi://10.0.0.5/MatrizObjDist";
+        String url2 = "rmi://10.0.0.6/MatrizObjDist";
         // obtiene una referencia que "apunta" al objeto remoto asociado a la URL
         InterfaceMultMatrizRMI r1 = (InterfaceMultMatrizRMI)Naming.lookup(url1);
         InterfaceMultMatrizRMI r2 = (InterfaceMultMatrizRMI)Naming.lookup(url2);
