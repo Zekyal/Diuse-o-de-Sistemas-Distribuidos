@@ -1,7 +1,7 @@
 import java.rmi.Naming;
 
 public class ClienteMultMatrizRMI{
-    static int N = 8;
+    static int N = 1000;
     static float[][] A= new float[N][N];
     static float[][] B= new float[N][N];
     static float[][] C= new float[N][N];
